@@ -84,6 +84,7 @@ i32 mapToNumber(string s) {
 		return 0x40000003;
 	} else if (s == "/") {
 		return 0x40000004;
+	} else {
+		return -1; // invalid instruction
 	}
-	return -1; // invalid instruction
 }
