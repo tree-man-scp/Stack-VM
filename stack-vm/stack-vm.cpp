@@ -65,6 +65,11 @@ void StackVM::doPrimitive() {
                         sp--;
 			break;
 		case 4: // div
+			if (memory[sp] == 0)
+			{
+				dat = 0;
+				break;
+			}
 			std::cout <<  "div " << memory[sp - 1] << " " << memory[sp] << std::endl;
                         memory[sp - 1] = memory[sp - 1] / memory[sp];
                         sp--;
