@@ -44,6 +44,12 @@ void StackVM::execute() {
 	}
 }
 void StackVM::doPrimitive() {
+	if (memory[sp] == 0 & dat = 4)
+	{
+		std::cout << "Cannot divide by 0, breaking" << std::endl;
+		return;
+
+	}
 	switch (dat) {
 		case 0: // halt
 			std::cout << "halt" << std::endl;
@@ -65,15 +71,10 @@ void StackVM::doPrimitive() {
                         sp--;
 			break;
 		case 4: // div
-			if (memory[sp] == 0)
-			{
-				dat = 0;
-				break;
-			}
 			std::cout <<  "div " << memory[sp - 1] << " " << memory[sp] << std::endl;
                         memory[sp - 1] = memory[sp - 1] / memory[sp];
                         sp--;
-			break;
+                        break;
 	}
 }
 void StackVM::run() {
