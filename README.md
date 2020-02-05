@@ -1,5 +1,4 @@
 # Stack-VM
-Don't divide by 0 or else it will break.
-
 Might add floating point division soonTM
-Added another line to REAMD.md
+
+Division by 0 won't work (of course it won't, dummy)
