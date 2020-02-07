@@ -1,6 +1,9 @@
 #include <iostream>
 #include <fstream>
 #include "lexer.h"
+#include <string>
+#include <sstream>
+#include <math.h>
 
 typedef uint32_t i32;
 
@@ -9,6 +12,7 @@ using namespace std;
 // functions
 vector<i32> compileToInstructions(strings s);
 bool isInteger(string s);
+bool isFloat(string s);
 bool isPrimimitive(string s);
 i32 mapToNumber(string s); 
 
@@ -55,6 +59,8 @@ vector<i32> compileToInstructions(strings s) {
 	for (i32 i = 0; i < s.size(); i++) {
 		if (isInteger(s[i])) {
 			instructions.push_back(stoi(s[i]));
+		} else if (isFloat(s[i])) {
+			instructions.push_back(stof(s[i]));
 		} else {
 			i32 instruction = mapToNumber(s[i]);
 			if (instruction != -1) {
@@ -75,6 +81,23 @@ bool isInteger(string s) {
 	}
 	return true;
 }
+
+
+
+
+bool isFloat(string s) {
+	for (i32 i = 0; i < s.length(); i++) {
+		float val = std::stof (s[i]);
+		if (val != floor(val)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+}
+
+
+
 i32 mapToNumber(string s) {
 	if (s == "+") {
 		return 0x40000001;
