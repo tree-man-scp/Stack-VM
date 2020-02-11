@@ -14,7 +14,7 @@ vector<i32> compileToInstructions(strings s);
 bool isInteger(string s);
 bool isFloat(string s);
 bool isPrimimitive(string s);
-i32 mapToNumber(string s); 
+i32 mapToNumber(string s);
 
 int main(int argc, char *argv[]) {
 	// check for input errors
@@ -60,7 +60,8 @@ vector<i32> compileToInstructions(strings s) {
 		if (isInteger(s[i])) {
 			instructions.push_back(stoi(s[i]));
 		} else if (isFloat(s[i])) {
-			instructions.push_back(stof(s[i]));
+			printf("Float detected, breaking");
+			break;
 		} else {
 			i32 instruction = mapToNumber(s[i]);
 			if (instruction != -1) {
@@ -82,19 +83,14 @@ bool isInteger(string s) {
 	return true;
 }
 
-
-
-
 bool isFloat(string s) {
 	for (i32 i = 0; i < s.length(); i++) {
-		float val = std::stof (s[i]);
-		if (val != floor(val)) {
-			return true;
-		} else {
-			return false;
-		}
+		return s.find('.') != std::string::npos;
 	}
 }
+
+
+
 
 
 
